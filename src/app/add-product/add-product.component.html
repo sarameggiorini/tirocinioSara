@@ -1,0 +1,121 @@
+
+
+<!-- <div class="add-product-container">
+     <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()"> 
+  
+      <label>ID: {{idNewProduct}}</label>
+      <label>
+        Nome:
+        <input type="text" formControlName="name">
+      </label>
+    
+      <label>
+        Prezzo:
+        <input type="number" [formControl]="idNewProduct">
+      </label>
+
+      <button type="submit" [disabled]="!addProductForm.valid"> Salva </button>
+
+    </form>
+  </div>
+ -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+  <!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aggiungi dettagli prodotto:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"> -->
+
+        <!-- Form Input Group -->
+  <!--     <form>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">@</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-text" id="basic-addon2">@example.com</span>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+          <span class="input-group-text">@</span>
+          <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+        </div>
+      </form> --> 
+        <!-- Fine form -->
+<!--
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Easiest Way to Add Input Masks to Your Forms</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!--   <link rel="stylesheet" href="assets/css/style.css">  -->
+</head>
+<body>
+  <div class="registration-form">
+      <form>
+          <div class="form-icon">
+              <span><i class="icon icon-user"></i></span>
+          </div>
+          <div class="row">
+             <div class="col-5">
+          <div class="form-group">
+            <input type="text" class="form-control item" id="surname" value={{this.productToAdd.id_prodotto}} />
+          </div>
+       </div>
+       <div class="col-7">
+          <div class="form-group">
+            <input type="number" class="form-control item" id="email" placeholder="Prezzo">
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control item" id="name" placeholder="Nome articolo" />
+          </div>
+        
+         
+          <div class="form-group">
+              <button type="submit" class="btn btn-block create-account">Create Account</button>
+          </div>
+      </form>
+     
+  </div>
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script src="assets/js/script.js"></script> -->
+</body>
+
+
+
+<!-- PROVA -->
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add();">
+    add
+  </button>
+</div>

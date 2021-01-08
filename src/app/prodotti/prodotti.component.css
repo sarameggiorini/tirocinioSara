@@ -1,0 +1,365 @@
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);
+}
+
+.container {
+    padding: 0px;
+    margin: 0px;  
+    display: flex;
+    width: 100%;
+    height: calc(100Vh-5px);
+    max-width: 100%;
+    flex-direction: column;
+}
+
+/*  NAVBAR continua sotto */
+#container-navbar {
+    background:#e3e3e3;
+    border: 1px solid black;
+    width: 100%;
+    height: 4%;
+    font: normal x-large/1 "Roboto Condensed", sans-serif;
+    font-size: .75rem;
+    letter-spacing: .05em;
+	color: rgb(8, 6, 6);
+    align-items: center;
+    display: flex;              
+    display: -webkit-flex; 
+    flex-flow: column nowrap;       
+    -webkit-flex-flow: column nowrap;
+}
+
+
+/*  PROGRAM PAGE */
+#container-left {
+    background: #f7f2f2;
+    border: 1px solid black;
+    width: 50%;
+    height: 96%;
+    min-height: 100%;
+    display: flex;              /* setto il box come flessibili per poterli disporre */
+    display: -webkit-flex; 
+    flex-flow: column nowrap;       /* dispongo i box in colonna */
+    -webkit-flex-flow: column nowrap;   /* per contenitore a riga singola uso flex-wrap con il valore nowrap. 
+                                         Semplifico e uso flex-flow per dichiarare entrambe le proprietà */                                  
+}
+
+.button-start{
+    height: 50px; 
+    width: 50px;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    /*display: block;  Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+.body-overlay{
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    text-align: center;
+ 
+}
+
+  #text-overlay1{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    /* transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%); */
+  }
+
+  #text-overlay2{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    /* transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%); */
+  }
+
+
+  
+  #overlayFirstPage {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(89, 85, 141, 0.849); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+  .body-overlayFirstPage{
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    text-align: center;
+ 
+}
+
+  #text-overlayFirstPage {
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;   
+    font-family: fantasy;
+    color: rgb(241, 178, 40);
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%); 
+  }
+
+
+.btn-confirmAdd {
+    margin-right: 20%;
+    color: white;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 6px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+    transition: 0.2s;
+    }
+    .btn-confirmAdd:hover { background: linear-gradient(#f5ae00, #f59500) #f5ae00; }
+    .btn-confirmAdd:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
+
+.btn-return {
+    color: white;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: #8d8c88 #000 #555351;
+    border-radius: 6px;
+    background: linear-gradient(#a6bfc2, #5d7174) #667c7b;
+    transition: 0.2s;
+    margin-left: 5px;
+    }
+    .btn-return:hover { background: linear-gradient(#afada8, #c0d1da) #968d77; }
+    .btn-return:active { background: linear-gradient(#c6cfd1, #8d8265) #8f8475; }
+
+.box-1sx {
+    background:#ffe600;            
+    width: 100%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.input-code {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-carrello {
+    color: white;
+    background-color: #336dec;
+    border-color: #336dec;
+}
+ /* Darker background on mouse-over */
+ .btn-carrello:hover {
+    background-color: #75746f;
+}
+
+#buttonAdd {
+    color: white;
+    background-color: #336dec;
+    border-color: #336dec;
+}
+
+
+
+/* .btn-svuota {
+    background-color: #ebeade;  
+    border: none; /* Remove borders
+    color: black; 
+    padding: 12px 16px;  Some padding 
+    font-size: 16px;  Set a font size 
+    cursor: pointer;  Mouse pointer on hover 
+}
+ /* Darker background on mouse-over 
+.btn-svuota:hover {
+    background-color: #75746f;
+} */
+
+#box-2sx {
+    background: #f7f7f7;
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 370px;
+}
+
+#box-bag {
+    background: #f7f7f7;
+    border: 1px solid rgb(112, 111, 111);
+    width: 100%;
+    height: 40px;
+}
+
+#box-3sx {
+    background: #e3ecf3;
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 100px;
+}
+
+
+/* RIGHT PAGE */
+#container-right {
+    background: #fcf8f8;
+    border: 1px solid black;
+    width: 50%; 
+    height: 96%;
+    min-height:100%;
+    display: flex;              /* setto il box come flessibili per poterli disporre */
+    display: -webkit-flex; 
+    flex-flow: column nowrap;       /* dispongo i box in riga */
+    -webkit-flex-flow: column nowrap;   /* per contenitore a riga singola uso flex-wrap con il valore nowrap. 
+                                            Semplifico e uso flex-flow per dichiarare entrambe le proprietà */
+}
+
+#box-1dx {
+    background: #87CEFF;
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 100px;
+}
+
+.dim-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+                
+
+
+
+/* GUIDA css */
+li {
+    list-style-type: none;
+}
+
+.bullets {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 15px auto;
+    font-weight: bold;
+}
+                  
+.bullet-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+                  
+                  
+.bullet {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    padding: 3px;
+    margin: 3px;          
+    color: darken(#42e878, 18%);
+    border: 2px solid #42e878;
+    background-color: #42e878;
+    font-size: 1rem / 1.4;
+    line-height: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 200ms 100ms ease-out;
+}
+   
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text 
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    position: absolute;
+    z-index: 1;
+}
+*/
+/* Show the tooltip text when you mouse over the tooltip container 
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+                  */
+
+.selectedGuide {
+    color: rgb(31, 133, 70);
+    position: relative;
+}
+.notSelectedGuide{
+    color: auto;
+    position: relative;
+}
+
+span.selectedGuide:hover span.tooltiptext {
+    display: block;
+    position: absolute;
+    bottom: 1em;
+    background: rgba(222, 231, 134, 0.5);
+    color: black;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 400px;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  span.notSelectedGuide:hover span.tooltiptext {
+    display: block;
+    /* position: absolute; */
+    bottom: 1em;
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 400px;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+ .tooltiptext {
+    display: none;
+  }
+
+  
+

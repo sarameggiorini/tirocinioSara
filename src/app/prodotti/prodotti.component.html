@@ -1,0 +1,228 @@
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title> cassa RFID </title>
+
+<!-- <ng-container *ngIf="!startPage; then programPage"></ng-container> -->
+<div style="display: block;" *ngIf="getFirstPage" id="overlayFirstPage" (click)="changePage();offFirstPage()">
+   <!--*ngIf="startPage"-->
+   <!-- <button type="button-start" class="btn btn-primary" (click)="changePage()">
+      Clicca Qui
+   </button> -->
+   <div class="body-overlayFirstPage">
+      <span id="text-overlayFirstPage">
+         PREMI QUI PER INIZIARE!
+      </span>
+   </div>
+</div>
+
+<!-- inizio programPage -->
+<!-- <ng-template #programPage> -->
+
+<!-- NAVBAR -->
+<div class="row" id="container-navbar" *ngIf="viewHome">
+   <ul class="bullets">
+      <li class="bullet-wrapper">   
+         <span class="badge rounded-pill bg-info text-dark">1</span> 
+         <span class="selectedGuide" *ngIf="!blockChangeCart">
+           Aggiungi articoli 
+           <span class="tooltiptext"> Aggiungi/Elimina articoli</span></span>
+         <span class="notSelectedGuide" *ngIf="blockChangeCart">
+            Aggiungi articoli
+            <span class="tooltiptext"> Aggiungi/Elimina articoli</span>
+         </span>
+      </li>
+      <li class="bullet-wrapper">
+         <span class="badge rounded-pill bg-info text-dark">2</span> 
+         <span class="selectedGuide" *ngIf="getFidelityCard">Carta fedeltà</span>
+         <span *ngIf="!getFidelityCard">Carta fedeltà</span>
+      </li>
+      <li class="bullet-wrapper">
+         <span class="badge rounded-pill bg-info text-dark">3</span> 
+         <span class="selectedGuide" *ngIf="getFormPagamento">Pagamento</span>
+         <span *ngIf="!getFormPagamento">Pagamento</span>
+      </li>
+   </ul>
+</div>
+
+<!-- Container più grande -->
+<div class="container" *ngIf="viewHome">
+
+   <!-- CONTAINER DINAMICO FlexBox -->
+   <div class="row">
+      <div id="container-left">
+         <div class="box-1sx">
+            <div class="input-code" *ngIf="!blockChangeCart">
+               <span>Codice articolo</span>
+               <div>
+                  <!--  da modificare il CHANGE qui giù -->
+                  <!-- ogni volta che premi tasto sulla tastiera, quando lo lasci parte funzione btnAddStatus -->
+                  <input type="text" [formControl]="idProductAdd" class="form-control" id="idProductAdd"(keyup)="btnAddStatus()">  
+               </div>
+            </div>
+            <div style="margin-top: auto; margin-bottom: auto; margin-left: -10%" *ngIf="!blockChangeCart">
+               <button disabled id="buttonAdd" type="button" class="btn btn-carrello" (click)="addProdotto()" *ngIf="statusBtnAdd">
+                  <i class="fa fa-plus" style="margin-left: 3px;"></i></button>
+              <button type="button" class="btn btn-carrello" (click)="addProdotto()" *ngIf="!statusBtnAdd">
+                  <i class="fa fa-plus" style="margin-left: 3px;"></i></button> 
+            </div>
+            <div style="margin-top: auto; margin-bottom: auto;" *ngIf="!blockChangeCart">
+               <button type="button" class="btn btn-carrello" (click)="confirmRemoveAll()">
+                  Svuota carrello
+                  <i class="fa fa-shopping-cart" style="margin-left: 3px;"></i>
+               </button>
+            </div>
+
+            <div style="margin-top: auto; margin-bottom: auto;" class="col-12" *ngIf="blockChangeCart">
+               <button type="button" class="btn btn-carrello" (click)="modifyCart()" style="width: 100%">
+                  Modifica carrello
+                  <i class="fa fa-shopping-cart" style="margin-left: 3px;"></i>
+               </button>
+            </div>
+
+
+         </div>
+         <div id="box-2sx" class="overflow-y" style="overflow-x: hidden;">
+            <h3 class="text-primary"> Riepilogo: </h3>
+            <h5 *ngIf="viewDataClient">Numero carta:
+               <br> {{clientSelected.carta_fedelta}}
+            </h5>
+            <hr>
+            <div *ngFor="let prodotto of cart; let index = index">
+               <!-- per ogni prodotto di prodotti visualizzo tutto -->
+               <div class="row">
+                  <div class="col-7">
+                     <div class="col-12">
+                        <span> {{prodotto.nome_prodotto}} </span>
+                     </div>
+                     <div class="col-12">
+                        <span style="font-size:small"> {{prodotto.id_prodotto}} </span>
+                     </div>
+                  </div>
+                  <div class="col-1">
+                     <span class="badge rounded-pill bg-info text-dark">1</span>
+                  </div>
+                  <div class="col-2">
+                     <span> {{prodotto.prezzo_prodotto}} € </span>
+                  </div>
+                  <div class="col-2">
+                     <!-- cancella prodotto da carrello -->
+                     <button type="button" (click)="removeProduct(prodotto.id_prodotto, index)"
+                        class="btn btn-md rounded-circle" style="background-color: #f7f7f7;" *ngIf="!blockChangeCart"><i
+                           class="fa fa-trash" style="color:#336dec"></i>
+                     </button>
+                  </div>
+               </div>
+               <hr>
+            </div>
+         </div>
+         <div id="box-bag" *ngIf="!blockChangeCart">
+            <div class="row">
+               <div class="col 10">
+                  <h6><i class="fa fa-shopping-bag"></i> Aggiungi un sacchetto </h6>
+               </div>
+               <div class="col-2">
+                  <button type="button" class="btn btn-primary rounded-circle" (click)="addBag()"> + </button>
+               </div>
+            </div>
+         </div>
+         <div id="box-3sx">
+            <div class="row">
+               <div class="col-10">
+                  Numero articoli:
+               </div>
+               <br>
+               <div class="col-2">
+                  <span class="badge rounded-pill bg-info text-dark">{{numProducts}}</span>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-3">
+                  Totale
+               </div>
+               <div class="col-3">
+                  <input id="prezzo" type="number" value="{{total | number:'1.2-2'}}" readonly />
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="container-right">
+         <div id="box-1dx">
+            <!--<div *ngFor="let prodotto of prodotti">
+                  <img src={{prodotto.img_prodotto}} class="dim-img">
+               </div>-->
+            <div *ngIf="getImgRight">
+               <img id="imgProdotto" class="col-12" src="../assets/img/default.jpg" />
+               <button type="button" *ngIf="numProducts!=0" class="btn btn-danger" (click)="goToCard()"> Prosegui </button>
+            </div>
+
+            <div *ngIf="getConfirmRemoveAll">
+               <div class="col-12" style="display: flex; justify-content: center;">
+                  <button class="btn-confirmAdd" (click)="removeAll()">Conferma</button>
+                  <button class="btn-return" (click)="returnConfirmRemove()"> Annulla</button>
+               </div>
+            </div>
+
+            <div *ngIf="getFidelityCard">
+               <span>IMMETTERE L' E-MAIL DELLA VOSTRA CARTA FEDELTA'</span>
+               <span (click)="getCreateCard()" style="color: violet">Crea la tua carta </span>
+               <input type="email" [formControl]="insertEmail"/>
+               <button class="btn-confirmAdd" (click)="verifyEmail()">Conferma</button>
+               <button class="btn-return" (click)="getPagamento()"> Prosegui senza carta</button>
+               <button class="btn-return" (click)="modifyCart()"> Tasto rosso alto dx</button>
+            </div>
+
+            <div *ngIf="getFormPagamento">
+               <span>GENTILE {{clientSelected.nome_cliente}} IL SUO TOTALE E' DI {{total}} €</span>
+               <button class="btn-confirmAdd">Paga</button>
+               <button class="btn-return" (click)="returnPagamento()"> Tasto rosso alto dx</button>
+            </div>
+
+
+         </div>
+      </div>
+   </div>
+</div> <!-- chiudo container -->
+
+
+<!-- Overlay articolo non trovato  -->
+<div id="overlay" *ngIf="getConfirmAddProduct">
+   <div class="body-overlay" *ngIf="!viewInsertPsw">
+      <div class="col-12" id="text-overlay1">
+         Articolo non trovato!
+      </div>
+      <div class="col-12" id="text-overlay2">
+         Aggiungere articolo?
+      </div>
+      <br>
+      <div class="col-12" style="display: flex; justify-content: center;">
+         <button class="btn-confirmAdd" (click)="getInsertPsw()">Conferma</button>
+         <button class="btn-return" (click)="offConfirmAddProduct()"> Annulla</button>
+      </div>
+   </div>
+
+   <div class="body-overlay" *ngIf="viewInsertPsw">
+       Immettere password:
+      <input type="password" [formControl]="insertPsw" placeholder="Password" />
+      <span *ngIf="viewAlertPsw"> Password errata!</span>
+      <button class="btn-confirmAdd" (click)="verifyPsw()">Conferma</button> 
+      <button class="btn-return" (click)="offInsertPsw()"> Annulla</button>
+   </div>
+</div>
+
+<div id="overlay" *ngIf="getNewProductForm" (click)="returnPageAddProduct()">
+   <app-add-product *ngIf="getNewProductForm" [idNewProduct]="valueNotFound"></app-add-product>
+</div>
+
+<div id="overlay" *ngIf="getFormCreateCard">
+   AGGIUNGI CLIENTE
+</div>
+<!-- chiudo programPage -->
+<!--</ng-template>  -->
+
+
+
+<!-- <ng-template #rightPage>   
+</ng-template> -->
+
